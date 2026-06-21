@@ -70,3 +70,33 @@ switch ($controller) {
         http_response_code(404);
         echo 'Controller nao encontrado.';
 }
+
+switch ($controller) {
+    case 'auth':
+        // código atual
+        break;
+
+    case 'usuarios':
+        // código atual
+        break;
+
+    case 'tipos':
+        exigirAutenticacao();
+
+        $tiposController = new TiposController();
+
+        switch ($action) {
+            case 'listar':
+                $tiposController->listar();
+                break;
+
+            default:
+                http_response_code(404);
+                echo 'Acao de tipos nao encontrada.';
+        }
+        break;
+
+    default:
+        http_response_code(404);
+        echo 'Controller nao encontrado.';
+}
