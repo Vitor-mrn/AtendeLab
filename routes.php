@@ -17,45 +17,58 @@ if ($controller === 'auth') {
         case 'login':
             $auth->exibirLogin();
             break;
+
         case 'entrar':
             $auth->entrar();
             break;
+
         case 'dashboard':
-            exigirAutenticacao();
             $auth->dashboard();
             break;
+
         case 'logout':
             $auth->logout();
             break;
+
         default:
             http_response_code(404);
+
             echo 'Ação de autenticação não encontrada.';
     }
+
     exit;
 }
 
-// exigirAutenticacao();
+exigirAutenticacao();
+
 
 switch ($controller) {
     case 'usuarios':
         $obj = new UsuariosController();
         break;
+
     case 'pessoas':
         $obj = new PessoasController();
         break;
+
     case 'tipos':
         $obj = new TiposAtendimentosController();
         break;
+
     case 'atendimentos':
         $obj = new AtendimentosController();
         break;
+
     default:
         http_response_code(404);
+
         exit('Controller não encontrado.');
 }
 
+
 if (!method_exists($obj, $action)) {
     http_response_code(404);
+
     exit('Ação não encontrada.');
 }
 
