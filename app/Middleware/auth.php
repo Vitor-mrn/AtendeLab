@@ -10,16 +10,16 @@ function usuarioAutenticado(): bool
         && is_array($_SESSION['usuario']);
 }
 
-// function exigirAutenticacao(): void
-// {
-//     if (!usuarioAutenticado()) {
-//         $_SESSION['mensagem'] =
-//             'Faça login para acessar a area restrita.';
+function exigirAutenticacao(): void
+{
+    if (!usuarioAutenticado()) {
+        $_SESSION['mensagem'] =
+            'Faça login para acessar a area restrita.';
 
-//         header('Location: ?controller=auth&action=login');
-//         exit;
-//     }
-// }
+        header('Location: ?controller=auth&action=login');
+        exit;
+    }
+}
 
 function usuarioAtual(): ?array
 {
