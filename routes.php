@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/app/Middleware/auth.php';
 require_once __DIR__ . '/app/Controllers/AuthController.php';
+require_once __DIR__ . '/app/Controllers/FrontendController.php';
 require_once __DIR__ . '/app/Controllers/UsuariosController.php';
 require_once __DIR__ . '/app/Controllers/PessoasController.php';
 require_once __DIR__ . '/app/Controllers/TiposAtendimentosController.php';
@@ -45,6 +46,10 @@ exigirAutenticacao();
 switch ($controller) {
     case 'usuarios':
         $obj = new UsuariosController();
+        break;
+
+    case 'frontend':
+        $obj = new FrontendController();
         break;
 
     case 'pessoas':
